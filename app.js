@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const session = require("express-session");
+const session = require("cookie-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const sign_in_model = require('./models/sign_up');
@@ -18,7 +18,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 mongoose.set("strictQuery", false);
-const dev_db_url = `mongodb+srv://${process.env.user_name}:${process.env.password}@cluster0.vndnniu.mongodb.net/members_only?retryWrites=true&w=majority`;
+const dev_db_url = `mongodb+srv://Gbotemi:O9lnUB2jiQcUPdo2@cluster0.vndnniu.mongodb.net/members_only?retryWrites=true&w=majority`;
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
