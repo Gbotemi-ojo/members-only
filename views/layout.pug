@@ -1,0 +1,24 @@
+html
+  head
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat&display=swap', rel='stylesheet')
+    style
+      include ../public/stylesheets/style.css
+  body
+    header
+     h1
+        a.homepage(href='/') Game 6
+     if user
+      .navigation-container
+           a(href='/create_message') Create Message
+           a(href='/profile_picture') Update profile picture
+           a(href='/join_club') Join club
+           a(href='/admin') Admin
+           a(href='/sign_out') Log out
+     else
+      .navigation-container
+           a(href='/sign_in') Log in
+           a(href='/sign_up') Sign up
+    block content
+    footer HI

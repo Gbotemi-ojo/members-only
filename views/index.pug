@@ -1,0 +1,45 @@
+extends layout
+block content
+    if user
+      if user.is_admin 
+        .dynamic-content-container
+          .message_container
+          for message in messages
+            div.message
+               img.profile-picture(src=`/images/uploads/${message.user_details.image}`)
+               div
+                 h3 #{message.title}
+                 div.the_message
+                   | #{message.message}
+                 hr
+                 .message_details
+                   div message from #{message.user_details.username}
+                   div #{message.date_formatted}
+                   form(method='POST' action='')
+                    input(type='hidden',name='authorid', required='true', value=message._id)
+                    button.delete-btn(type='submit') Delete
+      if !user.is_admin
+        .dynamic-content-container
+          .message_container
+          for message in messages
+            div.message
+               img.profile-picture(src=`/images/uploads/${message.user_details.image}`)
+               div
+                 h3 #{message.title}
+                 div.the_message
+                   | #{message.message}
+                 hr
+                 .message_details
+                   div message from #{message.user_details.username}
+                   div #{message.date_formatted}
+    else 
+      .dynamic-content-container
+       .message_container
+       for message in messages
+        div.message
+          img.profile-picture(src=`/images/uploads/${message.user_details.image}`)
+          div
+            h3 #{message.title}
+            div.the_message
+              | #{message.message}
+

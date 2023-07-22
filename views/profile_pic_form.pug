@@ -1,0 +1,17 @@
+extends layout
+block content
+     .dynamic-content-container
+      .form-details
+        h2 Update profile picture
+        div You can change your profile picture as much as you like
+      form.sign_up_form(action='',method="post",enctype='multipart/form-data')
+        div
+          label(for='') Upload profile picture
+          input.choose-file-btn(type='file', name='myImage')
+        button.submit_btn(type ="submit") Submit
+      if errors
+       ul.error-msg
+        for error in errors
+           li!= error.msg
+      if error_msg
+        div.error-msg #{error_msg}
