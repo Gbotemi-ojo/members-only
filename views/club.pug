@@ -3,18 +3,17 @@ block content
     if user.is_club_member
      div You're now a member!
     else
-     .dynamic-content-container
-      .form-details
-        h2 Join Game 6 Club
-        div input the club code "game6" to join and have access to more infos!
-      form.sign_up_form(action='',method="post")
-        div
-          label(for='') Enter Your UserName
-          input(type='text', placeholder='club code', name='club_code')
-        button.submit_btn(type ="submit") Submit
-      if errors
+     main
+      section.form-container
+        h1.form-text Become a member
+        form(action='',method="post")
+          div
+            label(for='') Enter club code
+            input(type='text', placeholder='club code', name='club_code')
+          button.action-btn(type='submit') Log In
+    if errors
        ul.error-msg
         for error in errors
            li!= error.msg
-      if error_msg
+    if error_msg
         div.error-msg #{error_msg}

@@ -1,26 +1,25 @@
 extends layout
 block content
-     .dynamic-content-container
-      .form-details
-        h2 Sign Up
-        div Getting Signed Up gives you access to more infos
-      form.sign_up_form(action='',method="post",enctype='multipart/form-data')
-        div
-          label(for='') Enter Your UserName
-          input(type='text', placeholder='UserName', name='username' required value=(undefined===sign_up ? '' : sign_up.username))
-        div
-          label(for='') Enter Your Password
-          input(type='password', placeholder='password', name='password' required value=(undefined===sign_up ? '' : sign_up.password))
-        div
-          label(for='') Confirm Password
-          input(type='password', placeholder='confirm password', name='confirm_password' required value=(undefined===sign_up ? '' : sign_up.confirm_password))
-        div
-          label(for='') Upload profile picture
-          input.choose-file-btn(type='file', name='myImage')
-        button.submit_btn(type ="submit") Submit
-      if errors
+    main
+      section.form-container
+        h1.form-text log in to have access to more info
+        form(action='',method="post",enctype='multipart/form-data')
+          div
+            label(for='') Username:
+            input(type='text', placeholder='UserName', name='username' required value=(undefined===sign_up ? '' : sign_up.username))
+          div
+            label(for='') Password:
+            input(type='password', placeholder='password', name='password' required value=(undefined===sign_up ? '' : sign_up.password))
+          div
+            label(for='') Confirm Password:
+            input(type='password', placeholder='confirm password', name='confirm_password' required value=(undefined===sign_up ? '' : sign_up.confirm_password))
+          div
+            label(for='') Upload profile picture
+            input.choose-file-btn(type='file', name='myImage')
+          button.action-btn(type='submit') Sign Up
+    if errors
        ul.error-msg
         for error in errors
            li!= error.msg
-      if error_msg
+    if error_msg
         div.error-msg #{error_msg}

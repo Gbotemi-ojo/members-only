@@ -1,18 +1,20 @@
 extends layout
 block content
-     .dynamic-content-container
-      .form-details
-        h2 Create Message
-        div When you create a message,The whole world gets to see!
-      form.sign_up_form(action='',method="post")
-        div
-          label(for='') Enter Title here
-          input(type='text', placeholder='Title', name='title' value=(undefined===message ? '' : message.title))
-        div
-          label(for='') Enter Message
-          input(type='text', placeholder='Message', name='message' value=(undefined===message ? '' : message.message))
-          input(type='hidden', name='user_details' value=(user_details))
-        button.submit_btn(type ="submit") Post Message
+  if !user
+   h1 Log in to send message
+  else
+    main
+      section.form-container 
+        h1.form-text Create a message
+        form(action='',method="post")
+          div
+            label(for='') Enter Title here
+            input(type='text', placeholder='Title', name='title' value=(undefined===message ? '' : message.title))
+          div
+            label(for='') Enter Message
+            input(type='text', placeholder='Message', name='message' value=(undefined===message ? '' : message.message))
+            input(type='hidden', name='user_details' value=(user_details))
+          button.action-btn(type='submit') Post Message
       if errors
        ul.error-msg
         for error in errors

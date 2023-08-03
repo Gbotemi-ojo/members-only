@@ -3,16 +3,15 @@ block content
     if user.is_admin
      div Admin priviledges applied, delete as you like.
     else
-     .dynamic-content-container
-      .form-details
-        h2 Admin Login
-        div input the admin passcode to delete posts
-      form.sign_up_form(action='',method="post")
-        div
-          label(for='') Enter Your UserName!
-          input(type='password', placeholder='admin passcode', name='admin_passcode')
-        button.submit_btn(type ="submit") Submit
-      if errors
+     main
+      section.form-container
+        h1.form-text Become an admin.
+        form(action='',method="post")
+          div
+            label(for='') Enter club code
+            input(type='password', placeholder='admin passcode', name='admin_passcode')
+          button.action-btn(type='submit') Sumbit
+    if errors
        ul.error-msg
         for error in errors
            li!= error.msg

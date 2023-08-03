@@ -23,7 +23,7 @@ exports.message_form_post = [
             user_details: res.locals.currentUser._id
         });
         if (!errors.isEmpty()) {
-            res.render("sign_up", {
+            res.render("create_message", {
                 message,
                 errors: errors.array()
             });

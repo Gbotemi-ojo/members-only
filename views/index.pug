@@ -1,45 +1,45 @@
 extends layout
 block content
-    if user
-      if user.is_admin 
-        .dynamic-content-container
-          .message_container
-          for message in messages
-            div.message
-               img.profile-picture(src=`/images/uploads/${message.user_details.image}`)
-               div
-                 h3 #{message.title}
-                 div.the_message
-                   | #{message.message}
-                 hr
-                 .message_details
-                   div message from #{message.user_details.username}
-                   div #{message.date_formatted}
-                   form(method='POST' action='')
-                    input(type='hidden',name='authorid', required='true', value=message._id)
-                    button.delete-btn(type='submit') Delete
-      if !user.is_admin
-        .dynamic-content-container
-          .message_container
-          for message in messages
-            div.message
-               img.profile-picture(src=`/images/uploads/${message.user_details.image}`)
-               div
-                 h3 #{message.title}
-                 div.the_message
-                   | #{message.message}
-                 hr
-                 .message_details
-                   div message from #{message.user_details.username}
-                   div #{message.date_formatted}
-    else 
-      .dynamic-content-container
-       .message_container
-       for message in messages
-        div.message
-          img.profile-picture(src=`/images/uploads/${message.user_details.image}`)
+  if user
+   if user.is_admin
+    main
+      h1.status-details Please log-in to be able to lorem 
+      for message in messages
+       section.messages-collection
+        div
+          img(src=`/images/uploads/${message.user_details.image}`)
           div
-            h3 #{message.title}
-            div.the_message
-              | #{message.message}
-
+            .general-info
+              h3 #{message.title}
+              div #{message.message}
+            hr
+            .special-info
+              div message from #{message.user_details.username}
+              div #{message.date_formatted}
+   if !user.is_admin
+    main
+      h1.status-details Please log-in to be able to lorem 
+      for message in messages
+       section.messages-collection
+        div
+          img(src=`/images/uploads/${message.user_details.image}`)
+          div
+            .general-info
+              h3 #{message.title}
+              div #{message.message}
+            hr
+            .special-info
+              div message from #{message.user_details.username}
+              div #{message.date_formatted}
+  else 
+    main
+      h1.status-details Please log-in to be able to lorem 
+      for message in messages
+       section.messages-collection
+        div
+          img(src=`/images/uploads/${message.user_details.image}`)
+          div
+            .general-info
+              h3 #{message.title}
+              div #{message.message}
+   
