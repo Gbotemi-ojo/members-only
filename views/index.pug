@@ -7,7 +7,7 @@ block content
       for message in messages
        section.messages-collection
         div
-          img(src=`/images/uploads/${message.user_details.image}`)
+          img(src=`/images/uploads/${message.user_details.image}` || src=`/images/uploads/default_picture` )
           div
             .general-info
               h3 #{message.title}
