@@ -11,6 +11,4 @@ const sign_up = new Schema({
     is_club_member : {type:Boolean}
 });
 
-
-
 module.exports = mongoose.model("sign_up", sign_up);

@@ -1,24 +1,9 @@
 extends layout
 block content
   if user
-   if user.is_admin
+   if user.is_club_member
     main
-      h1.status-details Please log-in to be able to lorem 
-      for message in messages
-       section.messages-collection
-        div
-          img(src=`/images/uploads/${message.user_details.image}` || src=`/images/uploads/default_picture` )
-          div
-            .general-info
-              h3 #{message.title}
-              div #{message.message}
-            hr
-            .special-info
-              div message from #{message.user_details.username}
-              div #{message.date_formatted}
-   if !user.is_admin
-    main
-      h1.status-details Please log-in to be able to lorem 
+      h1.status-details welcome #{user.username} 
       for message in messages
        section.messages-collection
         div
@@ -31,9 +16,20 @@ block content
             .special-info
               div message from #{message.user_details.username}
               div #{message.date_formatted}
+   if !user.is_club_member
+    main
+      h1.status-details welcome #{user.username}, join the club to see more infos
+      for message in messages
+       section.messages-collection
+        div
+          img(src=`/images/uploads/${message.user_details.image}`)
+          div
+            .general-info
+              h3 #{message.title}
+              div #{message.message}
   else 
     main
-      h1.status-details Please log-in to be able to lorem 
+      h1.status-details You are currently not logged in.
       for message in messages
        section.messages-collection
         div
